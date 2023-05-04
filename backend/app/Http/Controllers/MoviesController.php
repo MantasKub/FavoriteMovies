@@ -13,4 +13,14 @@ class MoviesController extends Controller
 
         return $data;
     }
+
+    public function delete($id)
+    {
+        try {
+            Movies::find($id)->delete();
+            return 'Movie successfully deleted';
+        } catch (\Exception $e) {
+            return response('Error', 500);
+        }
+    }
 }

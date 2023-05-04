@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Movies() {
@@ -12,8 +13,9 @@ function Movies() {
   }, []);
 
   return (
-    <div className="container py-3">
-      <h1>My favorit movies</h1>
+    <>
+      <h1>My favorite movies</h1>
+      <Link to="/admin"><button className="btn btn-success mb-3">Add or remove movie</button></Link>
       <div className="row">
         {data.map(movie =>
           <div className="col-4" key={movie.id}>
@@ -25,7 +27,7 @@ function Movies() {
           </div>
         )}
       </div>
-    </div>
+    </>
   )
 }
 
