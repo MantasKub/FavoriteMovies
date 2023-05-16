@@ -7,7 +7,7 @@ function MoviesAdmin() {
 
   const [data, setData] = useState([]);
   const [message, setMessage] = useState();
-  const [refresh, setrefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -15,18 +15,18 @@ function MoviesAdmin() {
     axios.get('http://127.0.0.1:8000/api/movies/')
       .then(resp => {
         setData(resp.data);
-        setLoading(false);
-      });
+      })
+      .finally(() => setLoading(false));
   }, [refresh]);
 
   const handleDelete = (id) => {
     setLoading(true);
     axios.delete('http://127.0.0.1:8000/api/movies/' + id)
       .then(resp => {
-        setMessage({ m: resp.data, s: 'success' });
-        setLoading(false);
-        setrefresh(!refresh);
-      });
+        setMessage(resp.data);
+        setRefresh(!refresh);
+      })
+      .finally(() => setLoading(false));
   }
 
   return (
