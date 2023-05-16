@@ -1,14 +1,15 @@
-function Loading({ show }) {
-  return (
-    show &&
+
+function Loading({ loading }) {
+
+
+  return loading &&
     <div className="loading">
-      <div className="lds-facebook"><div></div>
+      <div className="lds-facebook">
+        <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
-
-  )
 }
 
 export default Loading;

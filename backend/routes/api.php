@@ -15,5 +15,8 @@ use App\Http\Controllers\MoviesController;
 |
 */
 
-Route::get('/', [MoviesController::class, 'index']);
-Route::delete('/{id}', [MoviesController::class, 'delete'])->where('id', '[0-9]+');
+Route::group(['prefix' => 'movies'], function () {
+  Route::get('/', [MoviesController::class, 'index']);
+  Route::post('/', [MoviesController::class, 'create']);
+  Route::delete('/{id}', [MoviesController::class, 'delete'])->where('id', '[0-9]+');
+});

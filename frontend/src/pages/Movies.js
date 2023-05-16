@@ -8,14 +8,14 @@ function Movies() {
 
   useEffect(() => {
 
-    axios.get('http://127.0.0.1:8000/api/')
+    axios.get('http://127.0.0.1:8000/api/movies')
       .then(resp => setData(resp.data));
   }, []);
 
   return (
     <>
       <h1>My favorite movies</h1>
-      <Link to="/admin"><button className="btn btn-success mb-3">Add or remove movie</button></Link>
+      <Link to="/admin" className="btn btn-success mb-3">Add or delete movie</Link>
       <div className="row">
         {data.map(movie =>
           <div className="col-4" key={movie.id}>
