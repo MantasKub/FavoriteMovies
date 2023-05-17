@@ -14,16 +14,22 @@ function Movies() {
 
   return (
     <>
-      <h1>My favorite movies</h1>
-      <Link to="/admin" className="btn btn-success mb-3">Add or delete movie</Link>
-      <div className="row">
+      <Link to="/admin" className="btn btn-success mb-4">Add or delete movie</Link>
+      <div class="row">
         {data.map(movie =>
-          <div className="col-4" key={movie.id}>
-            <img
-              src={movie.photo}
-              alt={movie.name}
-            />
-            <h4>{movie.name}</h4>
+          <div class="col-3 mb-3">
+            <div class="card shadow-sm bg-dark">
+              <img
+                src={movie.photo}
+                alt={movie.name}
+              />
+              <div class="card-body text-white">
+                <h4>{movie.name}</h4>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">{movie.year}</small>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>

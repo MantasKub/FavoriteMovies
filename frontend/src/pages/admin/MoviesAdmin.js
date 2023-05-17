@@ -32,30 +32,28 @@ function MoviesAdmin() {
   return (
     <>
       <Loading show={loading} />
-      <h1>Edit your movies list</h1>
+      <h1 className="text-center text-white">Edit your movies list</h1>
       {message && <div className="alert alert-success">{message}</div>}
       <Link to="/admin/newMovie" className="btn btn-success mb-3">Add new movie</Link>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Cover</th>
-            <th>Title</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(movie =>
-            <tr key={movie.id}>
-              <td>{movie.id}</td>
-              <td><img src={movie.photo} alt={movie.name}></img></td>
-              <td>{movie.name}</td>
-              <td>{movie.year}</td>
-              <td><button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button></td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <div class="row">
+        {data.map(movie =>
+          <div class="col-3 mb-3">
+            <div class="card shadow-sm bg-dark">
+              <img
+                src={movie.photo}
+                alt={movie.name}
+              />
+              <div class="card-body text-white">
+                <h4>{movie.name}</h4>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">{movie.year}</small>
+                  <button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   )
 }
