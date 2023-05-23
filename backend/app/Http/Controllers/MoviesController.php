@@ -14,6 +14,15 @@ class MoviesController extends Controller
         return $data;
     }
 
+    public function search($keyword)
+    {
+        try {
+            return Movies::where('name', 'LIKE', '%' . $keyword . '%')->get();
+        } catch (\Exception $e) {
+            return response('Can not get movies list', 500);
+        }
+    }
+
     public function create(Request $request)
     {
         try {

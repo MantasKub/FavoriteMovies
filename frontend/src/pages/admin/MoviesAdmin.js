@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
+import Header from '../../components/header/Header';
 
 function MoviesAdmin() {
 
@@ -31,6 +32,7 @@ function MoviesAdmin() {
 
   return (
     <>
+      <Header />
       <Loading show={loading} />
       <h1 className="text-center text-white">Edit your movies list</h1>
       {message && <div className="alert alert-success">{message}</div>}

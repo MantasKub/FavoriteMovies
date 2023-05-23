@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 
-function Header() {
+function Header({ setData }) {
+
+  // const [search, setSearch] = useState('');
+
+  const handleSearch = (e) => {
+    if (e.target.value === '') return;
+
+    axios.get('http://127.0.0.1:8000/api/movies/s/' + e.target.value)
+      .then(resp => setData(resp.data));
+  }
+
+
   return (
     <header className="p-3 mb-5">
       <div className="container">
@@ -13,7 +26,8 @@ function Header() {
           </Link>
           <div className=" search d-flex">
             <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-              <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
+              <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" onKeyUp={handleSearch} />
+              <button className="btn search">Search</button>
             </form>
             <div className="text-end">
               <button type="button" className="btn btn-warning me-2">Login</button>

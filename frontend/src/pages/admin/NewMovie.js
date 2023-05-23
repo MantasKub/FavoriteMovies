@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Message from '../../components/message/Message';
 import Loading from '../../components/loading/Loading';
+import Header from '../../components/header/Header';
 
 function NewMovie() {
 
@@ -29,6 +30,7 @@ function NewMovie() {
 
   return (
     <>
+      <Header />
       <Loading show={loading} />
       <h1>New Movie</h1>
       <Message message={message} />

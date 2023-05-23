@@ -1,3 +1,4 @@
+import Header from '../components/header/Header';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -14,6 +15,7 @@ function Movies() {
 
   return (
     <>
+      <Header />
       <Link to="/admin" className="btn btn-success mb-4">Add or delete movie</Link>
       <div class="row">
         {data.map(movie =>
