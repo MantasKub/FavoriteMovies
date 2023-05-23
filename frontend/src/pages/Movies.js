@@ -1,34 +1,35 @@
-import Header from '../components/header/Header';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Header from '../components/header/Header';
 
 function Movies() {
 
   const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
 
     axios.get('http://127.0.0.1:8000/api/movies')
       .then(resp => setData(resp.data));
-  }, []);
+  }, [refresh]);
 
   return (
     <>
-      <Header />
+      <Header setData={setData} setRefresh={setRefresh} />
       <Link to="/admin" className="btn btn-success mb-4">Add or delete movie</Link>
-      <div class="row">
+      <div className="row">
         {data.map(movie =>
-          <div class="col-3 mb-3">
-            <div class="card shadow-sm bg-dark">
+          <div className="col-3 mb-3" key={movie.id}>
+            <div className="card shadow-sm bg-dark">
               <img
                 src={movie.photo}
                 alt={movie.name}
               />
-              <div class="card-body text-white">
+              <div className="card-body text-white">
                 <h4>{movie.name}</h4>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">{movie.year}</small>
+                <div className="d-flex justify-content-between align-items-center">
+                  <small className="text-muted">{movie.year}</small>
                 </div>
               </div>
             </div>

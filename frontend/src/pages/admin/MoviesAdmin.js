@@ -37,18 +37,18 @@ function MoviesAdmin() {
       <h1 className="text-center text-white">Edit your movies list</h1>
       {message && <div className="alert alert-success">{message}</div>}
       <Link to="/admin/newMovie" className="btn btn-success mb-3">Add new movie</Link>
-      <div class="row">
+      <div className="row">
         {data.map(movie =>
-          <div class="col-3 mb-3">
-            <div class="card shadow-sm bg-dark">
+          <div className="col-3 mb-3">
+            <div className="card shadow-sm bg-dark">
               <img
                 src={movie.photo}
                 alt={movie.name}
               />
-              <div class="card-body text-white">
+              <div className="card-body text-white">
                 <h4>{movie.name}</h4>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">{movie.year}</small>
+                <div className="d-flex justify-content-between align-items-center">
+                  <small className="text-muted">{movie.year}</small>
                   <button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button>
                 </div>
               </div>
