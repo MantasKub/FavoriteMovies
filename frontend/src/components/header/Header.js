@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import MainContext from '../../context/MainContext';
 
-function Header({ setData, setRefresh }) {
+function Header() {
 
   const [search, setSearch] = useState('');
+  const { setData, setRefresh } = useContext(MainContext);
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    if (search === '') return setRefresh((last) => {
-      console.log(last)
-    });
+    if (search === '') return setRefresh(last => !last);
 
     axios.get('http://127.0.0.1:8000/api/movies/s/' + search)
       .then(resp => setData(resp.data));
@@ -30,7 +30,7 @@ function Header({ setData, setRefresh }) {
           </Link>
           <div className=" search d-flex">
             <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 input-group" role="search" onSubmit={handleSearch}>
-              <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" onKeyUp={(e) => setSearch(e.target.value)} />
+              <input type="search" className="form-control form-control-dark text-bg-dark border-dark" placeholder="Search..." aria-label="Search" onKeyUp={(e) => setSearch(e.target.value)} />
               <button className="btn">Search</button>
             </form>
             <div className="text-end">

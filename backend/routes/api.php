@@ -21,3 +21,6 @@ Route::group(['prefix' => 'movies'], function () {
   Route::post('/', [MoviesController::class, 'create']);
   Route::delete('/{id}', [MoviesController::class, 'delete'])->where('id', '[0-9]+');
 });
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);

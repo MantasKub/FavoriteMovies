@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Loading from '../../components/loading/Loading';
-import Header from '../../components/header/Header';
+import MainContext from '../../context/MainContext';
 
 function MoviesAdmin() {
 
-  const [data, setData] = useState([]);
-  const [message, setMessage] = useState();
-  const [refresh, setRefresh] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { data, setLoading, setData, refresh, setRefresh, setMessage } = useContext(MainContext);
 
   useEffect(() => {
     setLoading(true);
@@ -22,9 +18,10 @@ function MoviesAdmin() {
 
   const handleDelete = (id) => {
     setLoading(true);
+
     axios.delete('http://127.0.0.1:8000/api/movies/' + id)
       .then(resp => {
-        setMessage(resp.data);
+        setMessage({ m: resp.data, s: 'success' });
         setRefresh(!refresh);
       })
       .finally(() => setLoading(false));
@@ -32,14 +29,11 @@ function MoviesAdmin() {
 
   return (
     <>
-      <Header />
-      <Loading show={loading} />
       <h1 className="text-center text-white">Edit your movies list</h1>
-      {message && <div className="alert alert-success">{message}</div>}
       <Link to="/admin/newMovie" className="btn btn-success mb-3">Add new movie</Link>
       <div className="row">
         {data.map(movie =>
-          <div className="col-3 mb-3">
+          <div className="col-3 mb-3" key={movie.id}>
             <div className="card shadow-sm bg-dark">
               <img
                 src={movie.photo}

@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Header from '../components/header/Header';
+import MainContext from '../context/MainContext';
 
 function Movies() {
 
-  const [data, setData] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+  const { data, setData, refresh, setLoading } = useContext(MainContext);
 
   useEffect(() => {
+    setLoading(true);
 
     axios.get('http://127.0.0.1:8000/api/movies')
-      .then(resp => setData(resp.data));
+      .then(resp => setData(resp.data))
+      .finally(() => setLoading(false));
   }, [refresh]);
 
   return (
     <>
-      <Header setData={setData} setRefresh={setRefresh} />
       <Link to="/admin" className="btn btn-success mb-4">Add or delete movie</Link>
       <div className="row">
         {data.map(movie =>

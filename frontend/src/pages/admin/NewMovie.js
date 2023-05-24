@@ -1,14 +1,11 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Message from '../../components/message/Message';
-import Loading from '../../components/loading/Loading';
-import Header from '../../components/header/Header';
+import MainContext from '../../context/MainContext';
 
 function NewMovie() {
 
-  const [message, setMessage] = useState();
-  const [loading, setLoading] = useState(false);
+  const { setLoading, setMessage } = useContext(MainContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -30,10 +27,7 @@ function NewMovie() {
 
   return (
     <>
-      <Header />
-      <Loading show={loading} />
       <h1>New Movie</h1>
-      <Message message={message} />
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label>Title</label>
