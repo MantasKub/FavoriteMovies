@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import MainContext from '../../context/MainContext';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
 
   const [search, setSearch] = useState('');
-  const { setData, setRefresh } = useContext(MainContext);
+  const { setData, setRefresh, user, setUser, setMessage, setLoading } = useContext(MainContext);
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -15,6 +17,22 @@ function Header() {
 
     axios.get('http://127.0.0.1:8000/api/movies/s/' + search)
       .then(resp => setData(resp.data));
+  }
+
+  const handleLogout = () => {
+    setLoading(true);
+    axios.get('http://127.0.0.1:8000/api/logout')
+      .then(() => {
+        setMessage({ m: 'Logout successful', s: 'success' });
+        setUser(false);
+        localStorage.removeItem('token');
+        delete axios.defaults.headers.common['Authorization'];
+        setTimeout(() => navigate('/'), 2000);
+      })
+      .catch(error => {
+        setMessage({ m: error.response.data.message, s: 'danger' })
+      })
+      .finally(() => setLoading(false));
   }
 
 
@@ -33,9 +51,16 @@ function Header() {
               <input type="search" className="form-control form-control-dark text-bg-dark border-dark" placeholder="Search..." aria-label="Search" onKeyUp={(e) => setSearch(e.target.value)} />
               <button className="btn">Search</button>
             </form>
-            <div className="text-end">
-              <button type="button" className="btn btn-warning me-2">Login</button>
-            </div>
+            {!user ?
+              <div className="text-end">
+                <Link to="/login" className="btn btn-warning me-2">Login</Link>
+                <Link to="/register" className="btn btn-warning me-2">Register</Link>
+              </div>
+              :
+              <div className="text-end">
+                <button className="btn btn-warning me-2" onClick={handleLogout}>Logout</button>
+              </div>
+            }
           </div>
         </div>
       </div>

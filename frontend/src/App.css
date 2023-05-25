@@ -3,23 +3,24 @@
 body {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='600' height='180' preserveAspectRatio='none' viewBox='0 0 600 180'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1042%26quot%3b)' fill='none'%3e%3crect width='600' height='180' x='0' y='0' fill='rgba(14%2c 65%2c 71%2c 1)'%3e%3c/rect%3e%3cpath d='M1 180L181 0L218.5 0L38.5 180z' fill='url(%23SvgjsLinearGradient1043)'%3e%3c/path%3e%3cpath d='M152 180L332 0L393.5 0L213.5 180z' fill='url(%23SvgjsLinearGradient1043)'%3e%3c/path%3e%3cpath d='M268 180L448 0L575.5 0L395.5 180z' fill='url(%23SvgjsLinearGradient1043)'%3e%3c/path%3e%3cpath d='M576 180L396 0L240 0L420 180z' fill='url(%23SvgjsLinearGradient1044)'%3e%3c/path%3e%3cpath d='M448 180L268 0L157 0L337 180z' fill='url(%23SvgjsLinearGradient1044)'%3e%3c/path%3e%3cpath d='M314 180L134 0L0.5 0L180.5 180z' fill='url(%23SvgjsLinearGradient1044)'%3e%3c/path%3e%3cpath d='M474.75356243017205 180L600 54.75356243017205L600 180z' fill='url(%23SvgjsLinearGradient1043)'%3e%3c/path%3e%3cpath d='M0 180L125.24643756982795 180L 0 54.75356243017205z' fill='url(%23SvgjsLinearGradient1044)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1042'%3e%3crect width='600' height='180' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1043'%3e%3cstop stop-color='rgba(189%2c 180%2c 12%2c 0.2)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(189%2c 180%2c 12%2c 0.2)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1044'%3e%3cstop stop-color='rgba(189%2c 180%2c 12%2c 0.2)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(189%2c 180%2c 12%2c 0.2)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
+}
+
+body,
+html {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 img {
-  max-width: 100%;
-  max-height: 453px;
+  width: 100%;
+  max-height: 430px;
+  height: auto;
 }
 
 .card-body {
-  height: 130px;
-}
-
-label {
-  color: #ffc107;
+  height: 150px;
 }
 
 h1 {

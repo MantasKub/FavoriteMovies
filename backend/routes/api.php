@@ -19,10 +19,11 @@ use App\Http\Controllers\AuthController;
 Route::group(['prefix' => 'movies'], function () {
   Route::get('/', [MoviesController::class, 'index']);
   Route::get('/s/{keyword}', [MoviesController::class, 'search']);
-  Route::post('/', [MoviesController::class, 'create']);
-  Route::delete('/{id}', [MoviesController::class, 'delete'])->where('id', '[0-9]+');
+  Route::middleware('auth:sanctum')->post('/', [MoviesController::class, 'create']);
+  Route::middleware('auth:sanctum')->delete('/{id}', [MoviesController::class, 'delete'])->where('id', '[0-9]+');
 });
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::middleware('auth:sanctum')->get('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth:sanctum')->get('/check', [AuthController::class, 'index']);

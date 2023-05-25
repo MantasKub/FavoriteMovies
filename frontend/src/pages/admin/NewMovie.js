@@ -27,22 +27,27 @@ function NewMovie() {
 
   return (
     <>
-      <h1>New Movie</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label>Title</label>
-          <input type="text" name="name" className="form-control" required />
-        </div>
-        <div className="mb-3">
-          <label>Year</label>
-          <input type="number" name="year" className="form-control" required />
-        </div>
-        <div className="mb-3">
-          <label>Cover</label>
-          <input type="text" name="photo" className="form-control" required />
-        </div>
-        <button className="btn btn-success">Save</button>
-      </form>
+      <main className="form-signin w-50 m-auto">
+        <form onSubmit={handleSubmit}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-film text-warning" viewBox="0 0 16 16" />
+          <h1 className="h3 mb-3 fw-normal">New Movie</h1>
+          <div className="form-floating">
+            <input type="text" name="name" className="form-control" id="floatingInput" />
+            <label htmlFor="floatingInput text-dark">Title</label>
+          </div>
+          <div className="form-floating">
+            <input type="number" name="year" className="form-control" id="floatingPassword" />
+            <label htmlFor="floatingPassword text-dark">Year</label>
+          </div>
+          <div className="form-floating">
+            <input type="text" name="photo" className="form-control" id="floatingPassword" />
+            <label htmlFor="floatingPassword text-dark">Cover</label>
+          </div>
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            <button className="w-50 btn btn-lg btn-success" type="submit">Save</button>
+          </div>
+        </form>
+      </main>
     </>
   )
 }

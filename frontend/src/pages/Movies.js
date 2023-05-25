@@ -5,7 +5,7 @@ import MainContext from '../context/MainContext';
 
 function Movies() {
 
-  const { data, setData, refresh, setLoading } = useContext(MainContext);
+  const { data, setData, refresh, setLoading, user } = useContext(MainContext);
 
   useEffect(() => {
     setLoading(true);
@@ -17,7 +17,11 @@ function Movies() {
 
   return (
     <>
-      <Link to="/admin" className="btn btn-success mb-4">Add or delete movie</Link>
+      {user ?
+        <>
+          <Link to="/admin" className="btn btn-success mb-4">Add or delete movie</Link>
+        </>
+        : null}
       <div className="row">
         {data.map(movie =>
           <div className="col-3 mb-3" key={movie.id}>

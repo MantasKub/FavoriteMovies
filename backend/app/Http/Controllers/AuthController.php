@@ -9,6 +9,7 @@ class AuthController extends Controller
 {
     public function index()
     {
+        return 'You are logged in';
     }
 
     public function login(Request $request)
