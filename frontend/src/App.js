@@ -16,7 +16,6 @@ import MoviesAdmin from './pages/admin/MoviesAdmin';
 import NewMovie from './pages/admin/NewMovie';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import NotFound from './pages/NotFound';
 
 function App() {
 

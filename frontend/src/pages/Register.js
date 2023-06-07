@@ -20,7 +20,7 @@ function Register() {
         setUser(true);
         localStorage.setItem('token', resp.data.token);
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + resp.data.token;
-        setTimeout(() => navigate('/login'), 2000);
+        setTimeout(() => navigate('/'), 2000);
       })
       .catch(error => {
         setMessage({ m: error.response, data, s: 'danger' })

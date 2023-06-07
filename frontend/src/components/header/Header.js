@@ -52,7 +52,7 @@ function Header() {
               <button className="btn">Search</button>
             </form>
             {!user ?
-              <div className="text-end">
+              <div className="text-end d-flex">
                 <Link to="/login" className="btn btn-warning me-2">Login</Link>
                 <Link to="/register" className="btn btn-warning me-2">Register</Link>
               </div>
